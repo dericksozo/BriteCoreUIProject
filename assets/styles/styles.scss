@@ -1,0 +1,434 @@
+/* Variables */
+$main-color:                 #194853; /* Used on the header. */
+$main-active-color:          #375F6A;
+$background-color:           #F9FBFB;
+$danger-color:               #A42C26;
+$highlight-color:            #197B93; /* Used on borders and to highlight the field types */
+$highlight-subtle-color:     #A5BFC5; /* Used on some borders. */
+$sub-color:                  #EFF4F5; /* Used on the field type backgrounds */
+$white-color:                #fff;
+$black-color:                #202627;
+
+/* Used for paddings, margins, and font-sizes. */
+$scale--default:             1rem; /* 16px */
+$scale--oneUp:               1.25rem; /* 20px - Used for the display labels and things of that nature. */
+$scale--twoUp:               1.375rem; /* 22px */
+$scale--threeUp:             2rem; /* 32px */
+$scale--fourUp:              2.5625rem; /* 41px */
+$scale--fiveUp:              3rem; /* 48px */
+$scale--sixUp:               3.25rem; /* 52px */
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+/* End Reset */
+
+html,
+body {
+  height: 100vh;
+}
+
+html {
+  /* To make the font a bit smaller than the initial design on screens 1200px and smaller */
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 1500px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  background-color: $background-color;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Extensions */
+
+%small-text {
+  font-size: 12px;
+  color: $black-color;
+}
+
+%bordered {
+
+  display: block;
+
+  width: 100%;
+
+  background: none;
+  background-color: $white-color;
+
+  border-radius: 4px;
+  border: 1px solid $highlight-color;
+
+  font-size: $scale--default;
+
+  padding: $scale--default;
+}
+
+/* End Extensions */
+
+/* Layout Classes */
+.Container {
+  margin-top: $scale--threeUp;
+  border-radius: 4px;
+
+  height: 100%;
+
+  border: 1px solid $highlight-subtle-color;
+
+  display: flex;
+}
+
+.Container-subSection,
+.Container-mainSection {
+  padding-top:    $scale--fourUp;
+  padding-bottom: $scale--fourUp;
+  padding-left:   $scale--threeUp;
+  padding-right:  $scale--threeUp;
+}
+
+.Container-subSection {
+  background-color: $sub-color;
+  flex: 0 0 323px;
+
+  border-right: 1px solid $highlight-subtle-color;
+
+  overflow: scroll;
+}
+
+.Container-mainSection {
+  flex: auto;
+  background-color: $white-color;
+}
+
+.Container-contents {
+  margin-top: $scale--default;
+  padding-bottom: $scale--default;
+  height: auto;
+}
+
+.Main {
+  padding-top: $scale--fourUp;
+  padding-bottom: $scale--fourUp;
+  padding-left: $scale--fiveUp;
+  padding-right: $scale--fiveUp;
+}
+/* End Layout Classes */
+
+/* Layout Helper Classes */
+.FlexGrid {
+
+  display: flex;
+
+  &.FlexGrid--wrap {
+    flex-wrap: wrap;
+  }
+
+  &.FlexGrid--vertical {
+    flex-direction: column;
+  }
+
+  &.FlexGrid--fullHeight {
+    height: 100%;
+  }
+
+  &.FlexGrid--gutters {
+    margin-left: -$scale--default;
+
+    > .FlexGrid-cell {
+      padding-left: $scale--default;
+    }
+  }
+
+  &.FlexGrid--guttersOneDown {
+    margin-left: -8px;
+
+    > .FlexGrid-cell {
+      padding-left: 8px;
+    }
+  }
+
+  &.FlexGrid--spaceBetween {
+    justify-content: space-between;
+  }
+
+}
+
+.FlexGrid-cell {
+  flex: auto;
+
+  &.FlexGrid-cell--auto {
+    flex: none;
+  }
+
+  &.FlexGrid-cell--full {
+    flex: 0 0 100%;
+  }
+
+  &.FlexGrid-cell--half {
+    flex: 0 0 50%;
+  }
+
+  &.FlexGrid-cell--800 {
+    max-width: 800px;
+  }
+
+  &.FlexGrid-cell--withPadding {
+    padding: $scale--default;
+  }
+
+}
+/* End Layout Helper Classes */
+
+/* Typographic styles. */
+
+.HelpText,
+.InfoText,
+.FieldType-label {
+  @extend %small-text;
+}
+
+.InfoText {
+  font-style: italic;
+}
+
+.Headline {
+  font-size: $scale--sixUp;
+  font-weight: 300;
+
+  line-height: 1.2;
+}
+
+.SubHeadline,
+.SubSubHeadline {
+  font-weight: 600;
+  font-size: $scale--threeUp;
+}
+
+.SubSubHeadline {
+  font-size: $scale--twoUp;
+  margin-bottom: 8px;
+}
+
+/* End Typographic Styles */
+
+/* Styles for components/britecore-header.js */
+.Header {
+  width: 100%;
+
+  background-color: $main-color;
+
+  padding-top: $scale--default;
+  padding-bottom: $scale--default;
+  padding-left: $scale--default;
+
+  display: flex;
+
+  align-items: center;
+}
+
+.Logo {
+  color: $white-color;
+  font-size: $scale--twoUp;
+  font-weight: 700;
+
+  margin-right: 8rem;
+
+  background-image: url("/assets/img/britecore-logo.png");
+  background-repeat: no-repeat;
+  background-size: $scale--twoUp $scale--oneUp;
+  background-position: 0px 50%;
+
+  padding-left: $scale--threeUp;
+}
+
+.HeaderLinks {
+  display: flex;
+}
+
+.HeaderLink {
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+  border-radius: 4px;
+  margin-right: $scale--twoUp;
+  color: $white-color;
+
+  cursor: pointer;
+}
+
+.HeaderLink:hover,
+.HeaderLink.router-link-active {
+  background-color: $main-active-color;
+}
+/* End styles for components/britecore-header.js */
+
+.InputGroupContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+  > .InputGroup {
+    margin-left: -$scale--default;
+    padding-left: $scale--default;
+    flex: 0 0 50%;
+  }
+}
+
+.InputGroup {
+
+  margin-bottom: $scale--fiveUp;
+
+  &.InputGroup--noBottomSpacing {
+    margin-bottom: 0;
+  }
+
+  &-label {
+    font-size: $scale--twoUp;
+    margin-bottom: $scale--default;
+    font-weight: 400;
+  }
+
+  &-helpText {
+    @extend %small-text;
+    margin-top: $scale--default;
+  }
+
+  &-input {
+    @extend %bordered;
+  }
+}
+
+.FieldType {
+
+  @extend %bordered;
+
+  cursor: pointer;
+  border: 1px solid $highlight-subtle-color;
+  margin-top: $scale--default;
+
+  &-name {
+    color: $black-color;
+    font-size: $scale--twoUp;
+    line-height: 1;
+  }
+
+  &-label {
+    margin-top: $scale--default;
+  }
+
+  &-value {
+    font-size: $scale--default;
+  }
+
+  /* Variations */
+
+  &.active {
+    background-color: $highlight-color;
+  }
+
+  &.active &-name,
+  &.active &-value {
+    color: $white-color;
+  }
+
+  &.FieldType--small {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  &.FieldType--small &-name {
+    font-size: $scale--default;
+    font-weight: 600;
+  }
+}
+
+/* Styles for components/field-group.js */
+.FieldGroupsContainer {
+  max-width: 323px;
+  padding: $scale--default;
+  border-radius: 4px;
+  background-color: $background-color;
+  border: 1px solid $highlight-color;
+  height: 100%;
+}
+
+
+.Button {
+
+  display: inline-block;
+  cursor: pointer;
+
+  background: none;
+  border-radius: 4px;
+
+  padding-top:    8px;
+  padding-bottom: 8px;
+  padding-left:   $scale--default;
+  padding-right:  $scale--default;
+
+  font-weight: 400;
+
+  &.Button--fullWidth {
+    display: block;
+    width: 100%;
+  }
+
+  &.Button--white {
+    background-color: $white-color;
+    color: $black-color;
+    border: 1px solid $highlight-color;
+  }
+
+  &.Button--red {
+    background-color: $danger-color;
+    color: $white-color;
+    border: 1px solid $black-color;
+  }
+
+  &.Button--highlight {
+    background-color: $highlight-color;
+    color: $white-color;
+    border: 1px solid $main-color;
+  }
+
+}
+
+.CallToActions {
+  margin-top: $scale--twoUp;
+}
+
+.Tag {
+  cursor: pointer;
+
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 6px;
+
+  background-color: $sub-color;
+  color: $main-color;
+  border: 1px solid $main-active-color;
+}

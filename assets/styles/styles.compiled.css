@@ -1,0 +1,380 @@
+/* Variables */
+/* Used on the header. */
+/* Used on borders and to highlight the field types */
+/* Used on some borders. */
+/* Used on the field type backgrounds */
+/* Used for paddings, margins, and font-sizes. */
+/* 16px */
+/* 20px - Used for the display labels and things of that nature. */
+/* 22px */
+/* 32px */
+/* 41px */
+/* 48px */
+/* 52px */
+/* Reset */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+/* End Reset */
+html,
+body {
+  height: 100vh;
+}
+
+html {
+  /* To make the font a bit smaller than the initial design on screens 1200px and smaller */
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 1500px) {
+  html {
+    font-size: 16px;
+  }
+}
+body {
+  background-color: #F9FBFB;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Extensions */
+.HelpText,
+.InfoText,
+.FieldType-label, .InputGroup-helpText {
+  font-size: 12px;
+  color: #202627;
+}
+
+.InputGroup-input, .FieldType {
+  display: block;
+  width: 100%;
+  background: none;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #197B93;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+/* End Extensions */
+/* Layout Classes */
+.Container {
+  margin-top: 2rem;
+  border-radius: 4px;
+  height: 100%;
+  border: 1px solid #A5BFC5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Container-subSection,
+.Container-mainSection {
+  padding-top: 2.5625rem;
+  padding-bottom: 2.5625rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.Container-subSection {
+  background-color: #EFF4F5;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 323px;
+          flex: 0 0 323px;
+  border-right: 1px solid #A5BFC5;
+  overflow: scroll;
+}
+
+.Container-mainSection {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  background-color: #fff;
+}
+
+.Container-contents {
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  height: auto;
+}
+
+.Main {
+  padding-top: 2.5625rem;
+  padding-bottom: 2.5625rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+/* End Layout Classes */
+/* Layout Helper Classes */
+.FlexGrid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.FlexGrid.FlexGrid--wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.FlexGrid.FlexGrid--vertical {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.FlexGrid.FlexGrid--fullHeight {
+  height: 100%;
+}
+.FlexGrid.FlexGrid--gutters {
+  margin-left: -1rem;
+}
+.FlexGrid.FlexGrid--gutters > .FlexGrid-cell {
+  padding-left: 1rem;
+}
+.FlexGrid.FlexGrid--guttersOneDown {
+  margin-left: -8px;
+}
+.FlexGrid.FlexGrid--guttersOneDown > .FlexGrid-cell {
+  padding-left: 8px;
+}
+.FlexGrid.FlexGrid--spaceBetween {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.FlexGrid-cell {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+.FlexGrid-cell.FlexGrid-cell--auto {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+}
+.FlexGrid-cell.FlexGrid-cell--full {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+}
+.FlexGrid-cell.FlexGrid-cell--half {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+}
+.FlexGrid-cell.FlexGrid-cell--800 {
+  max-width: 800px;
+}
+.FlexGrid-cell.FlexGrid-cell--withPadding {
+  padding: 1rem;
+}
+
+/* End Layout Helper Classes */
+/* Typographic styles. */
+.InfoText {
+  font-style: italic;
+}
+
+.Headline {
+  font-size: 3.25rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.SubHeadline,
+.SubSubHeadline {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.SubSubHeadline {
+  font-size: 1.375rem;
+  margin-bottom: 8px;
+}
+
+/* End Typographic Styles */
+/* Styles for components/britecore-header.js */
+.Header {
+  width: 100%;
+  background-color: #194853;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Logo {
+  color: #fff;
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin-right: 8rem;
+  background-image: url("/assets/img/britecore-logo.png");
+  background-repeat: no-repeat;
+  background-size: 1.375rem 1.25rem;
+  background-position: 0px 50%;
+  padding-left: 2rem;
+}
+
+.HeaderLinks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.HeaderLink {
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 4px;
+  margin-right: 1.375rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.HeaderLink:hover,
+.HeaderLink.router-link-active {
+  background-color: #375F6A;
+}
+
+/* End styles for components/britecore-header.js */
+.InputGroupContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.InputGroupContainer > .InputGroup {
+  margin-left: -1rem;
+  padding-left: 1rem;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+}
+
+.InputGroup {
+  margin-bottom: 3rem;
+}
+.InputGroup.InputGroup--noBottomSpacing {
+  margin-bottom: 0;
+}
+.InputGroup-label {
+  font-size: 1.375rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+.InputGroup-helpText {
+  margin-top: 1rem;
+}
+
+.FieldType {
+  cursor: pointer;
+  border: 1px solid #A5BFC5;
+  margin-top: 1rem;
+  /* Variations */
+}
+.FieldType-name {
+  color: #202627;
+  font-size: 1.375rem;
+  line-height: 1;
+}
+.FieldType-label {
+  margin-top: 1rem;
+}
+.FieldType-value {
+  font-size: 1rem;
+}
+.FieldType.active {
+  background-color: #197B93;
+}
+.FieldType.active .FieldType-name, .FieldType.active .FieldType-value {
+  color: #fff;
+}
+.FieldType.FieldType--small {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.FieldType.FieldType--small .FieldType-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Styles for components/field-group.js */
+.FieldGroupsContainer {
+  max-width: 323px;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #F9FBFB;
+  border: 1px solid #197B93;
+  height: 100%;
+}
+
+.Button {
+  display: inline-block;
+  cursor: pointer;
+  background: none;
+  border-radius: 4px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: 400;
+}
+.Button.Button--fullWidth {
+  display: block;
+  width: 100%;
+}
+.Button.Button--white {
+  background-color: #fff;
+  color: #202627;
+  border: 1px solid #197B93;
+}
+.Button.Button--red {
+  background-color: #A42C26;
+  color: #fff;
+  border: 1px solid #202627;
+}
+.Button.Button--highlight {
+  background-color: #197B93;
+  color: #fff;
+  border: 1px solid #194853;
+}
+
+.CallToActions {
+  margin-top: 1.375rem;
+}
+
+.Tag {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 6px;
+  background-color: #EFF4F5;
+  color: #194853;
+  border: 1px solid #375F6A;
+}
