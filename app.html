@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles/normalize.css" />
+    <link rel="stylesheet" href="/assets/styles/styles.compiled.css" />
+  </head>
+  <body>
+
+    <div id="App">
+      <britecore-header></britecore-header>
+      <main class="Main" role="main">
+        <router-view></router-view>
+      </main>
+    </div>
+
+    <!-- Template for NewQuestion Route View -->
+    <script type="text/x-template" id="create-new-question">
+      <div>
+        <div class="Headline">Commercial Property - Add Field</div>
+
+        <div class="Container">
+
+          <div class="Container-subSection">
+            <div class="SubHeadline">Field Types</div>
+
+            <fieldtypes-filterable :field-types="fieldTypes"></fieldtypes-filterable>
+
+          </div>
+
+          <div class="Container-mainSection">
+            <div class="SubHeadline">Field Details</div>
+
+
+            <div class="Container-contents FlexGrid">
+
+              <!-- Flexible Container -->
+              <div class="FlexGrid-cell FlexGrid-cell--800">
+                <div class="FlexGrid FlexGrid--wrap FlexGrid--gutters">
+
+                  <div class="FlexGrid-cell FlexGrid-cell--full">
+
+                    <div class="FlexGrid FlexGrid--gutters">
+                      <div class="FlexGrid-cell FlexGrid-cell--half">
+                        <britecore-input></britecore-input>
+                      </div>
+
+                      <div class="FlexGrid-cell FlexGrid-cell--half">
+                        <britecore-input></britecore-input>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="FlexGrid-cell FlexGrid-cell--full">
+                    <div class="FlexGrid FlexGrid--gutters">
+                      <div class="FlexGrid-cell FlexGrid-cell--half">
+                        <britecore-input></britecore-input>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="FlexGrid-cell FlexGrid-cell--full">
+                    <div class="FlexGrid FlexGrid--gutters">
+                      <div class="FlexGrid-cell FlexGrid-cell--half">
+                        <britecore-input></britecore-input>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="FlexGrid-cell FlexGrid-cell--full">
+
+                    <div class="SubSubHeadline">
+                      Tags
+                    </div>
+
+                    <tag-selector :tag-groups="tagGroups"></tag-selector>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Fixed Container -->
+              <div class="FlexGrid-cell FlexGrid-cell--auto FlexGrid-cell--withPadding">
+                  <div class="FieldGroupsContainer">
+
+                    <div class="FlexGrid FlexGrid--vertical FlexGrid--spaceBetween FlexGrid--fullHeight">
+                      <div class="FlexGrid-cell FlexGrid-cell--auto">
+
+                        <div class="SubSubHeadline">Field Groups</div>
+
+                        <div class="HelpText">Choose a group for this input</div>
+
+                        <fieldgroup></fieldgroup>
+
+                      </div>
+
+                      <div class="FlexGrid-cell FlexGrid-cell--auto">
+                        <button class="Button Button--white Button--fullWidth">Add New Group</button>
+                      </div>
+                    </div>
+
+                  </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="CallToActions FlexGrid FlexGrid--spaceBetween">
+          <div class="FlexGrid FlexGrid-cell--auto">
+            <button class="Button Button--highlight">Save Changes</button>
+          </div>
+
+          <div class="FlexGrid FlexGrid-cell--auto">
+            <div class="FlexGrid FlexGrid--gutters">
+
+              <div class="FlexGrid-cell FlexGrid-cell--auto">
+                <div class="Button Button--white">Cancel Changes</div>
+              </div>
+
+              <div class="FlexGrid-cell FlexGrid-cell--auto">
+                <div class="Button Button--red">Delete Input</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </script>
+
+    <!-- Template for components/britecore-header.js -->
+    <script type="text/x-template" id="britecore-header">
+      <header class="Header">
+        <div class="Logo">
+          BriteCore
+        </div>
+
+        <nav>
+          <ul class="HeaderLinks">
+            <li class="HeaderLink">
+              Policies
+            </li>
+            <li class="HeaderLink">
+              Claims
+            </li>
+            <li class="HeaderLink">
+              Contacts
+            </li>
+            <li class="HeaderLink">
+              Data
+            </li>
+            <router-link class="HeaderLink" tag="li" to="/questions/new">
+              Lines
+            </router-link>
+
+            <li class="HeaderLink">
+              All Modules
+            </li>
+
+          </ul>
+        </nav>
+
+      </header>
+    </script>
+
+    <!-- Template for components/fieldtypes-filterable.js -->
+    <script type="text/x-template" id="fieldtypes-filterable">
+
+      <div class="Container-contents">
+        <div class="InputGroup">
+          <div class="InputGroup-label">Filter Types</div>
+          <input @input="filterFieldTypes" v-model="searchValue" type="text" class="InputGroup-input" />
+        </div>
+
+        <div @click="makeActive(index)" v-for="(fieldType, index) in fieldTypesFiltered" class="FieldType" :class="[ activeIndex === index ? 'active' : '']">
+          <div class="FieldType-name">{{ fieldType.name }}</div>
+          <div class="FieldType-label">Definition</div>
+          <div class="FieldType-value">{{ fieldType.definition }}</div>
+          <div class="FieldType-label">Default Display</div>
+          <div class="FieldType-value">{{ fieldType.defaultDisplay }}</div>
+        </div>
+
+        <div v-if="fieldTypesFiltered.length === 0" class="InfoText">There are no field types that match the search '{{ searchValue }}'</div>
+
+      </div>
+
+    </script>
+
+    <!-- Template for components/tag-selector.js -->
+    <script type="text/x-template" id="tag-selector">
+      <div class="FlexGrid FlexGrid--gutters">
+        <div class="FlexGrid-cell FlexGrid-cell--half">
+          <div class="InputGroup InputGroup--noBottomSpacing">
+            <div class="InputGroup-label">Tag Group</div>
+            <div class="FlexGrid FlexGrid--guttersOneDown">
+
+              <div v-for="(tagGroup, index) in tagGroups" class="FlexGrid-cell FlexGrid-cell--auto">
+                <div @click="showTags(index)" class="Tag">
+                  {{ tagGroup.name }}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="FlexGrid-cell FlexGrid-cell--half">
+          <div class="InputGroup InputGroup--noBottomSpacing">
+            <div class="InputGroup-label">Tags</div>
+            <div v-if="!tagsToDisplay" class="InfoText">Select a tag group to see individual tags.</div>
+
+            <div v-else class="FlexGrid FlexGrid--guttersOneDown FlexGrid--wrap">
+              <div v-for="tag in tagsToDisplay" class="FlexGrid-cell FlexGrid-cell--auto">
+                <div class="Tag">
+                  {{ tag }}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </script>
+
+    <!-- Template components/britecore-input.js -->
+    <script type="text/x-template" id="britecore-input">
+      <div class="InputGroup">
+        <div class="InputGroup-label">Display Label</div>
+        <input type="text" class="InputGroup-input" />
+        <div class="InputGroup-helpText">This is some help text.</div>
+      </div>
+    </script>
+
+    <!-- Template for components/field-group.js -->
+    <script type="text/x-template" id="fieldgroup">
+      <div class="FieldType FieldType--small">
+        <div class="FieldType-name">Rental Vehicle Coverage Package</div>
+        <div class="HelpText">7 more inputs</div>
+      </div>
+    </script>
+
+    <!-- Vue -->
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script src="vuex.js"></script>
+
+    <!-- UI Components -->
+    <script src="/components/britecore-header.js"></script>
+    <script src="/components/britecore-input.js"></script>
+    <script src="/components/field-group.js"></script>
+    <script src="/components/fieldtypes-filterable.js"></script>
+    <script src="/components/tag-selector.js"></script>
+
+    <!-- App -->
+    <script src="app.js"></script>
+
+  </body>
+
+</html>
